@@ -5,7 +5,7 @@ from models import Grupo, Integrante, Reunion, Documento, Nota
 class GrupoAdmin(admin.ModelAdmin):
     list_display   = ('numero','nombre','funcionario')
     search_fields  = ['nombre']
-    list_filter = ('numero')
+    list_filter = ('numero',)
     list_per_page = 25
     list_max_show_all = 30
 

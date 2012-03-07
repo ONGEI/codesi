@@ -11,12 +11,12 @@ CATEGORIA = (
              )
 
 class Nomatividad(models.Model):
-    publicado       = models.ForeignKey(Perfil)
-    categoria       = models.IntegerField('Categoría', choices = CATEGORIA)
-    titulo              = models.CharField('Título', max_length = 200, blank = False, null = False)
-    descripcion    = models.TextField('Descripción')
+    publicado    = models.ForeignKey(Perfil)
+    categoria    = models.IntegerField('Categoría', choices = CATEGORIA)
+    titulo       = models.CharField('Título', max_length = 200, blank = False, null = False)
+    descripcion  = models.TextField('Descripción')
     presentacion = models.TextField('Presentación', blank = False, null = False)
-    autorizado     = models.BooleanField('Autorizado', default = False)
+    autorizado   = models.BooleanField('Autorizado', default = False)
 
     class Meta:
         verbose_name = 'Normatividad'
