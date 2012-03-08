@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es/PE">
+{% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="recurso" content="http://freehtml5templates.com">
+        <title>CODESI - La Angeda Digital Peruana</title>
+        <link rel="icon" href="images/favicon.gif" type="image/x-icon"/>
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.gif" type="image/x-icon"/> 
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/codesi.css"/>
+    </head>
+    <body>
+
+        <div id='container' class="container">
+            <section id="gridSystem">
+
+                <div class="row show-grid">
+                    <div class="span4">
+                        <img src='{{ STATIC_URL }}imagen/logo.gif' alt='Logo oficial de O.N.G.E.I'/>
+                    </div>
+                    
+                    <div class="span8">
+                        {% include "home/nav.html" %}
+                    </div>
+                </div>
+                
+                <div class="row show-grid">
+                    <div class="span12">
+                        <header></header>
+                    </div>
+                </div>
+
+                <div class="row show-grid">
+                    <div class="span8">
+                    {% block contenido %}
+                    {% endblock %}
+                    </div>
+
+                    <div class="span4">
+                        {% include "home/right.html" %}
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+        
+        {% include "home/footer.html" %}
+        
+        <script src="{{ STATIC_URL }}js/jquery.js"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap-dropdown.js"></script>
+
+    </body>
+</html>

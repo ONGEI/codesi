@@ -20,6 +20,8 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     
     (r'^grappelli/', include('grappelli.urls')),
+    
+    url(r'^$', 'home.views.index'),
 )
 
 #if settings.DEBUG:
