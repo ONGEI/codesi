@@ -1,5 +1,13 @@
 @import url("bootstrap/css/bootstrap.min.css");
-@import url("bootstrap/css/bootstrap-responsive.min.css");
+/*@import url("bootstrap/css/bootstrap-responsive.min.css");*/
+
+body {
+    background-image: url("../imagen/bg1.png");
+    background-position: left top;
+    background-repeat: repeat;
+    color: black;
+    margin: 0;
+}
 
 p {
     margin-bottom: 7px;

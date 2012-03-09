@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     
     (r'^grappelli/', include('grappelli.urls')),
     
+    (r'^miembro/', include('miembro.urls')),
     url(r'^$', 'home.views.index'),
 )
 

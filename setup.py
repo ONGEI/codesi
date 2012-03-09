@@ -14,6 +14,7 @@ setup(
     long_description = read('README'),
 
     author = 'O.N.G.E.I',
+    author_email = 'ONGEI@pcm.gob.pe',
 
     packages = find_packages('src'),
     package_dir = {'': 'src'},

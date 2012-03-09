@@ -13,12 +13,15 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': '',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'OPTIONS': {
+            'init_command': 'SET storage_engine=INNODB;SET CHARACTER SET utf8;SET collation_connection=utf8_bin;',
+        },
     }
 }
 
@@ -35,7 +38,7 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-PE'
 
 SITE_ID = 1
 
@@ -121,6 +124,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #apps
+    'export',
+    'grappelli.dashboard',
     'grappelli',
     'filebrowser',
     'south',
@@ -129,7 +134,19 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    #'Perfil'
+    'perfil',
+    'normatividad',
+    'miembro',
+    'grupo',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    "django.core.context_processors.static",
 )
 
 GRAPPELLI_INDEX_DASHBOARD = 'project.dashboard.CustomIndexDashboard'
