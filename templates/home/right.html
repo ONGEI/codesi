@@ -45,19 +45,13 @@
 
 <aside class="rigth-bar">
     <h3>Eventos</h3>
-
-    <article class="holder_news">
-    <h4>Lorem ipsum
-    <span>10.09.2011</span></h4>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu.<span class="readmore">
-    <a href="#">Read more..</a></span></p>
-    </article>
-
-    <article class="holder_news">
-    <h4>Lorem ipsum
-    <span>20.09.2011</span></h4>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu.	
-    <span class="readmore"><a href="#">Read more..</a></span></p>
-    </article>
+    
+    {% for evento in eventos %}
+        <article class="holder_news">
+            <h4>{{ evento.titulo }}
+            <span>{{ evento.inicio|date:"d.m.Y" }}</span></h4>
+            <p><span class="readmore"><a href="#">Leer más..</a></span></p>
+        </article>
+    {% endfor %}
    
 </aside>

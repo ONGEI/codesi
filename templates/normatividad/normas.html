@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load pagination_tags %}
+{% block titulo %}
+    {% if categoria == '0' %}
+        CODESI - Normas Oficiales
+    {% else %}{% if categoria == '1' %}
+        CODESI - Relacionados Nacionales
+    {% else %}{% if categoria == '2' %}
+        CODESI - Relacionados Internacionales
+    {% else %}{% if categoria == '3' %}
+        CODESI - Acuerdos y Reuniones
+    {% else %}{% if categoria == '4' %}
+        CODESI - Presentaciones
+    {% endif %}{% endif %}{% endif %}{% endif %}{% endif %}
+{% endblock %}
+
+{% block contenido %}
+    <section class="codesi">
+        {% if categoria == '0' %}
+            <h3>CODESI - Normas Oficiales</h3>
+        {% else %}{% if categoria == '1' %}
+            <h3>CODESI - Relacionados Nacionales</h3>
+        {% else %}{% if categoria == '2' %}
+            <h3>CODESI - Relacionados Internacionales</h3>
+        {% else %}{% if categoria == '3' %}
+            <h3>CODESI - Acuerdos y Reuniones</h3>
+        {% else %}{% if categoria == '4' %}
+            <h3>CODESI - Presentaciones</h3>
+        {% endif %}{% endif %}{% endif %}{% endif %}{% endif %}
+
+        {% autopaginate normas 10 %}
+            {% for norma in normas %}
+                <article class="holder_gallery">
+                    <h4>{{ norma.titulo }}</h4>
+                    <p>{{ norma.descripcion }}</p>
+                    <span class="readmore"><a href="/normatividad/{{ categoria }}/{{ norma.pk }}/{{ norma.get_titulo }}/">Leer más..</a></span>
+                </article>
+            {% endfor %}
+        {% paginate %}
+    </section>
+{% endblock %}

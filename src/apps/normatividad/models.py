@@ -30,3 +30,6 @@ class Nomatividad(models.Model):
 
     def get_categoria(self):
         return u'%s' % categoria[self.categoria][1]
+
+    def get_titulo(self):
+        return self.titulo.replace(' ', '-')
