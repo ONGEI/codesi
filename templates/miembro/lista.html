@@ -9,11 +9,11 @@
                 <ul class="nav nav-list">
                     <li class="nav-header">Miebros Plenos</li>
                     {% for mp in miembros_permanentes %}
-                        <li><a href="#"><i class="icon-user"></i>{{ mp.iniciales }} - {{ mp.entidad }}</a></li>
+                        <li><a href={% if mp.portal %}"{{ mp.portal }}" target="_new"{% else %}"#"{% endif %}><i class="icon-user"></i>{{ mp.iniciales }} - {{ mp.entidad }}</a></li>
                     {% endfor %}
                     <li class="nav-header">Miebros Invitados</li>
                     {% for mi in miembros_invitados %}
-                        <li><a href="#"><i class="icon-user"></i>{{ mi.iniciales }} - {{ mi.entidad }}</a></li>
+                        <li><a href={% if mi.portal %}"{{ mi.portal }}" target="_new"{% else %}"#"{% endif %}><i class="icon-user"></i>{{ mi.iniciales }} - {{ mi.entidad }}</a></li>
                     {% endfor %}
                 </ul>
             </div>

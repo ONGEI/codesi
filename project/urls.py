@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     
     (r'^miembro/', include('miembro.urls')),
     (r'^normatividad/', include('normatividad.urls')),
+    (r'^actividad/', include('actividad.urls')),
     url(r'^$', 'home.views.index'),
 )
 

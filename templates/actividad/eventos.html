@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load pagination_tags %}
+{% block titulo %}CODESI - Eventos{% endblock %}
+
+{% block contenido %}
+    <section class="codesi">
+        <h3>CODESI - Eventos</h3>
+
+        {% autopaginate eventos_codesi 2 %}
+            {% for evento in eventos_codesi %}
+                <article class="holder_gallery">
+                    {% if evento.foto %}
+                    <a href="#" class="photo_hover2"><img style='width: 120px;height: 100px;' alt="{{ evento.titulo }}" src="/media/{{ evento.foto }}"></a>
+                    {% endif %}
+                    <h4>{{ evento.titulo }}</h4>
+                    <p><strong>Inicio:</strong> {{ evento.inicio|date:"d.m.Y h:i:s a" }}</p>
+                    <p><strong>Fin:</strong> {{ evento.fin|date:"d.m.Y h:i:s a" }}</p>
+                    <p><strong>Dirección:</strong> {{ evento.direccion }}</p>
+                    {% autoescape off %}
+                    {{ evento.descripcion }}
+                    {% endautoescape %}
+                </article>
+            {% endfor %}
+        {% paginate using "pagination.html" %}
+    </section>
+{% endblock %}

@@ -139,6 +139,7 @@ INSTALLED_APPS = (
     'normatividad',
     'miembro',
     'grupo',
+    'actividad',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

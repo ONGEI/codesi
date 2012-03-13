@@ -18,39 +18,29 @@
 </aside>
 
 <aside class="rigth-bar">
-    <h3>Ultimas Noticias</h3>
+    <h3>Noticias</h3>
 
-    <article class="holder_news">
-    <h4>Lorem ipsum
-    <span>10.09.2011</span></h4>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu.<span class="readmore">
-    <a href="#">Read more..</a></span></p>
-    </article>
-
-    <article class="holder_news">
-    <h4>Lorem ipsum
-    <span>20.09.2011</span></h4>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu.	
-    <span class="readmore"><a href="#">Read more..</a></span></p>
-    </article>
-
-    <article class="holder_news">
-    <h4>Lorem ipsum
-    <span>27.09.2011</span></h4>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. 	
-    <span class="readmore"><a href="#">Read more..</a></span></p>
-    </article>
+    {% for nota in notas %}
+        <article class="holder_news">
+            <h4>{{ nota.titulo}}
+            <span>{{ nota.fecha|date:"d.m.Y" }}</span></h4>
+            <p>{{ nota.cuerpo|striptags|truncatewords:12 }} <span class="readmore">
+            <a href="#">Read more..</a></span></p>
+        </article>
+    {% endfor %}
        
 </aside>
 
 <aside class="rigth-bar">
-    <h3>Eventos</h3>
+    <h3><a href="/actividad/eventos/">Eventos</a></h3>
     
     {% for evento in eventos %}
         <article class="holder_news">
             <h4>{{ evento.titulo }}
-            <span>{{ evento.inicio|date:"d.m.Y" }}</span></h4>
-            <p><span class="readmore"><a href="#">Leer más..</a></span></p>
+            <span>{{ evento.publicacion|date:"d.m.Y" }}</span></h4>
+            <p><strong>Inicio:</strong> {{ evento.inicio|date:"d.m.Y h:i:s a" }}</p>
+            <p><strong>Fin:</strong> {{ evento.fin|date:"d.m.Y h:i:s a" }}</p>
+            <p><strong>Dirección:</strong> {{ evento.direccion }}</p>
         </article>
     {% endfor %}
    

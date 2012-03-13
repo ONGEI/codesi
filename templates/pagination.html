@@ -1,0 +1,60 @@
+{% if is_paginated %}
+{% load i18n %}
+<div class="pagination">
+<ul>
+    {% block previouslink %}
+
+        {% if page_obj.has_previous %}
+            <li>
+            <a href="?page{{ page_suffix }}={{ page_obj.previous_page_number }}{{ getvars }}">←</a>
+            </li>
+        {% else %}
+        {% if display_disabled_previous_link %}
+            <li>
+            <a href='#'>{{ previous_link_decorator|safe }}«</a>
+            </li>
+        {% endif %}
+        {% endif %}
+
+        {% endblock previouslink %}
+        {% block pagelinks %}
+
+        {% if display_page_links %}
+        {% for page in pages %}
+        {% if page %}
+        {% ifequal page page_obj.number %}
+            <li class="active">
+            <a href='#'>{{ page }}</a>
+            </li>
+        {% else %}
+            <li>
+            <a href="?page{{ page_suffix }}={{ page }}{{ getvars }}">{{ page }}</a>
+            </li>
+        {% endifequal %}
+        {% else %}
+            <li class="disabled">
+            <a href="#">...</a>
+            </li>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+        {% endblock pagelinks %}
+        {% block nextlink %}
+
+        {% if page_obj.has_next %}
+            <li>
+            <a href="?page{{ page_suffix }}={{ page_obj.next_page_number }}{{ getvars }}">→</a>
+            </li>
+        {% else %}
+        {% if display_disabled_next_link %}
+            <li>
+            <a href='#'>»{{ next_link_decorator|safe }}</a>
+            </li>
+        {% endif %}
+        {% endif %}
+
+    {% endblock nextlink %}
+</ul>
+</div>
+{% endif %}

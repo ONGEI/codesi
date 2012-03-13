@@ -47,8 +47,9 @@ h3 {
 }
 
 .holder_gallery {
-    float: left;
+    /*float: left;*/
     margin-right: 10px;
+    margin-bottom: 25px;
     padding: 0;
     /*width: 610px;*/
 }
@@ -153,4 +154,24 @@ footer {
     background-color: #33CC99;
     margin: 0 auto;
     width: 980px;
+}
+
+/************** tips **************/
+img.img_left {
+    float: left !important;
+    margin: 14px 20px 14px 0;
+}
+
+img.img_right {
+    border: medium none;
+    float: right !important;
+    margin: 14px 0 14px 20px;
+}
+
+img.img_block {
+    border: medium none;
+    clear: both !important;
+    display: block;
+    float: none !important;
+    margin: 14px 0 !important;
 }

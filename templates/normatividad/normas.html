@@ -32,8 +32,7 @@
             {% for norma in normas %}
                 <article class="holder_gallery">
                     <h4>{{ norma.titulo }}</h4>
-                    <p>{{ norma.descripcion }}</p>
-                    <span class="readmore"><a href="/normatividad/{{ categoria }}/{{ norma.pk }}/{{ norma.get_titulo }}/">Leer más..</a></span>
+                    <p>{{ norma.descripcion|truncatewords:15 }} <span class="readmore"><a href="/normatividad/{{ categoria }}/{{ norma.pk }}/{{ norma.get_titulo }}/">Leer más..</a></span></p>
                 </article>
             {% endfor %}
         {% paginate %}

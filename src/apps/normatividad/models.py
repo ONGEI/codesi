@@ -14,7 +14,7 @@ CATEGORIA = (
 class Nomatividad(models.Model):
     publicado    = models.ForeignKey(Perfil, editable = False, default = 0)
     categoria    = models.IntegerField('Categoría', choices = CATEGORIA)
-    titulo       = models.CharField('Título', max_length = 200, blank = False, null = False)
+    titulo       = models.CharField('Título', max_length = 250, blank = False, null = False)
     descripcion  = models.TextField('Descripción', blank = True, null = True)
     presentacion = models.TextField('Presentación', blank = False, null = False)
     autorizado   = models.BooleanField('Autorizado', default = False)
