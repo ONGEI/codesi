@@ -175,3 +175,12 @@ img.img_block {
     float: none !important;
     margin: 14px 0 !important;
 }
+
+.holder_gallery p {
+    text-align:justify;
+}
+
+/*.holder_gallery li, ol{
+    text-align:justify;
+    list-style: none outside none;
+}*/

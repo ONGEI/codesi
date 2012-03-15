@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from actividad.models import Evento, Nota
+from actividad.models import Evento, Noticia, Informe
 
 def index(request):
-    return render(request,'home/index.html',{'eventos' : Evento.get_eventos(),'notas' : Nota.get_notas(),})
+    return render(request,'home/index.html',{'eventos' : Evento.get_eventos(),'notas' : Noticia.get_noticias(),'informes':Informe.get_informes(),})

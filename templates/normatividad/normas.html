@@ -35,6 +35,6 @@
                     <p>{{ norma.descripcion|truncatewords:15 }} <span class="readmore"><a href="/normatividad/{{ categoria }}/{{ norma.pk }}/{{ norma.get_titulo }}/">Leer más..</a></span></p>
                 </article>
             {% endfor %}
-        {% paginate %}
+        {% paginate using "pagination.html" %}
     </section>
 {% endblock %}

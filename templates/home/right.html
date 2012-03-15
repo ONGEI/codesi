@@ -1,31 +1,30 @@
 <aside class="rigth-bar" style="width:100%;">
-    <h3 style="margin-left: 30px;">Informes</h3>
+    <h3 style="margin-left: 30px;"><a href="#">Informes</a></h3>
     
     <div style="margin-left: 30px;margin-bottom: 9px;padding: 8px 0;" class="well">
         <ul class="nav nav-list">
-            <li class="nav-header">2011</li>
-            <li><a href="#"><i class="icon-book"></i>Home</a></li>
-            <li><a href="#"><i class="icon-book"></i>Library</a></li>
-            <li><a href="#"><i class="icon-book"></i>Applications</a></li>
-            <li class="nav-header">2010</li>
-            <li><a href="#"><i class="icon-book"></i>Profile</a></li>
-            <li><a href="#"><i class="icon-book"></i>Settings</a></li>
-            <li><a href="#"><i class="icon-book"></i>Help</a></li>
-            <li><a href="#"><i class="icon-list"></i>Leer más</a></li>
+            <li class="nav-header">{{ informes.2.0 }}</li>
+            {% for informe in informes.0 %}
+                <li><a href="#"><i class="icon-book"></i>{{ informe.titulo }}</a></li>
+            {% endfor %}
+            <li class="nav-header">{{ informes.2.1 }}</li>
+            {% for informe in informes.1 %}
+                <li><a href="#"><i class="icon-book"></i>{{ informe.titulo }}</a></li>
+            {% endfor %}
         </ul>
     </div>
    
 </aside>
 
 <aside class="rigth-bar">
-    <h3>Noticias</h3>
+    <h3><a href="/actividad/noticias/">Noticias</a></h3>
 
     {% for nota in notas %}
         <article class="holder_news">
             <h4>{{ nota.titulo}}
             <span>{{ nota.fecha|date:"d.m.Y" }}</span></h4>
             <p>{{ nota.cuerpo|striptags|truncatewords:12 }} <span class="readmore">
-            <a href="#">Read more..</a></span></p>
+            <a href="/actividad/noticia/{{ nota.pk }}/{{ nota.get_titulo }}/">Read more..</a></span></p>
         </article>
     {% endfor %}
        

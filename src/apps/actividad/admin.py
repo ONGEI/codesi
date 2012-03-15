@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from sorl.thumbnail.admin import AdminImageMixin
-from models import Integrante, Reunion, Documento, Nota, Evento
+from models import Integrante, Reunion, Informe, Noticia, Evento
 
 class IntegranteAdmin(admin.ModelAdmin):
     list_display      = ('publicado','entidad','contacto','cargo','telefono','email')
@@ -30,8 +30,8 @@ class ReunionAdmin(admin.ModelAdmin):
 
 admin.site.register(Reunion, ReunionAdmin)
 
-class DocumentoAdmin(admin.ModelAdmin):
-    list_display      = ('publicado','titulo','fecha')
+class InformeAdmin(admin.ModelAdmin):
+    list_display      = ('publicado','titulo','fecha', 'ano')
     search_fields     = ['titulo']
     list_per_page     = 25
     list_max_show_all = 30
@@ -41,10 +41,10 @@ class DocumentoAdmin(admin.ModelAdmin):
             obj.publicado = request.user.get_profile()
         obj.save()
 
-admin.site.register(Documento, DocumentoAdmin)
+admin.site.register(Informe, InformeAdmin)
 
-class NotaAdmin(admin.ModelAdmin):
-    list_display      = ('publicado','titulo','fecha','fuente',)
+class NoticiaAdmin(admin.ModelAdmin):
+    list_display      = ('publicado','titulo','fecha','fuente','vista_previa',)
     search_fields     = ['titulo','fuente']
     list_per_page     = 25
     list_max_show_all = 30
@@ -59,7 +59,7 @@ class NotaAdmin(admin.ModelAdmin):
             obj.publicado = request.user.get_profile()
         obj.save()
 
-admin.site.register(Nota, NotaAdmin)
+admin.site.register(Noticia, NoticiaAdmin)
 
 class EventoAdmin(AdminImageMixin, admin.ModelAdmin):
     list_display      = ('publicado', 'titulo','inicio','fin','direccion','vista_previa')
