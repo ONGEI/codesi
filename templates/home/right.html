@@ -23,7 +23,7 @@
         <article class="holder_news">
             <h4>{{ nota.titulo}}
             <span>{{ nota.fecha|date:"d.m.Y" }}</span></h4>
-            <p>{{ nota.cuerpo|striptags|truncatewords:12 }} <span class="readmore">
+            {% autoescape off %}<p>{{ nota.cuerpo|striptags|truncatewords:12 }} {% endautoescape %}<span class="readmore">
             <a href="/actividad/noticia/{{ nota.pk }}/{{ nota.get_titulo }}/">Read more..</a></span></p>
         </article>
     {% endfor %}
