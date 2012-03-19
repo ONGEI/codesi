@@ -6,17 +6,17 @@
     <section class="codesi">
         <h3>CODESI - Noticias</h3>
 
-        {% autopaginate notas_codesi 10 %}
-            {% for nota in notas_codesi %}
+        {% autopaginate noticias_codesi 10 %}
+            {% for noticia in noticias_codesi %}
                 <article class="holder_gallery">
-                    {% if nota.foto %}
+                    {% if noticia.foto %}
                     <a href="#" class="photo_hover2">
-                        <img style='width: 120px;height: 90px;' alt="{{ nota.titulo }}" src="{{ nota.foto }}">
+                        <img style='width: 120px;height: 90px;' alt="{{ noticia.titulo }}" src="{{ noticia.foto }}">
                     </a>
                     {% endif %}
-                    <h4><a href='/actividad/noticia/{{ nota.pk }}/{{ nota.get_titulo }}/'>{{ nota.titulo }}</a></h4>
+                    <h4><a href='/actividad/noticia/{{ noticia.pk }}/{{ noticia.get_titulo }}/'>{{ noticia.titulo }}</a></h4>
                     {% autoescape off %}
-                    <p>{{ nota.cuerpo|striptags|truncatewords:30 }}</p>
+                    <p>{{ noticia.cuerpo|striptags|truncatewords:30 }}</p>
                     {% endautoescape %}
                 </article>
             {% endfor %}

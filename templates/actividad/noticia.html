@@ -7,11 +7,13 @@
         <h3>CODESI - Noticias</h3>
 
         <article class="holder_gallery">
-            <h4>{{ nota.titulo }}</h4>
-            <p>{{ nota.descripcion }}</p>
+            <h4>{{ noticia.titulo }}</h4>
+            <p>{{ noticia.descripcion }}</p>
+            <p>
             {% autoescape off %}
-            {{ nota.cuerpo }}
+            {{ noticia.cuerpo }}
             {% endautoescape %}
+            </p>
         </article>
 
     </section>

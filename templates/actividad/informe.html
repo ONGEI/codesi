@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block titulo %}CODESI - Informe{% endblock %}
+
+{% block contenido %}
+    <section class="codesi">
+        <h3>CODESI - Informe</h3>
+
+        <article class="holder_gallery">
+            <h4>{{ informe.titulo }}</h4>
+            <h6>publicado: {{ informe.fecha }}</h6>
+            <p>{{ informe.descripcion }}</p>
+            {% autoescape off %}
+            {{ informe.documento }}
+            {% endautoescape %}
+        </article>
+
+    </section>
+{% endblock %}

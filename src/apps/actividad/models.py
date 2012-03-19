@@ -47,6 +47,10 @@ class Informe(models.Model):
     def __unicode__(self):
         return u'%s' % (force_unicode(self.titulo, encoding='utf-8', strings_only=False, errors='strict'),)
 
+    def get_titulo(self):
+        print self.titulo.replace(' ', '_')
+        return self.titulo.replace(' ', '_')
+
     @staticmethod
     def get_informes():
         a = Informe.objects.values('ano').distinct('ano')[:2]

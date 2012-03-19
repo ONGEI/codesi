@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load pagination_tags %}
+{% block titulo %}CODESI - Informes{% endblock %}
+
+{% block contenido %}
+    <section class="codesi">
+        <h3>CODESI - Informes</h3>
+
+        {% autopaginate informes_codesi 5 %}
+            {% for informe in informes_codesi %}
+                <article class="holder_gallery">
+                    <h4><a href="/actividad/informe/{{ informe.pk }}/{{ informe.get_titulo }}/">{{ informe.titulo }}</a></h4>
+                    <h6>publicado: {{ informe.fecha }}</h6>
+                    {% autoescape off %}
+                    {{ informe.descripcion|truncatewords:30 }}
+                    {% endautoescape %}
+                </article>
+            {% endfor %}
+        {% paginate using "pagination.html" %}
+    </section>
+{% endblock %}
+
