@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from sorl.thumbnail.admin import AdminImageMixin
+#from sorl.thumbnail.admin import AdminImageMixin
 from models import Integrante, Reunion, Informe, Noticia, Evento
 
 class IntegranteAdmin(admin.ModelAdmin):
@@ -14,7 +14,7 @@ class IntegranteAdmin(admin.ModelAdmin):
             obj.publicado = request.user.get_profile()
         obj.save()
 
-admin.site.register(Integrante, IntegranteAdmin)
+#admin.site.register(Integrante, IntegranteAdmin)
 
 class ReunionAdmin(admin.ModelAdmin):
     list_display      = ('publicado','titulo','fecha')
@@ -28,7 +28,7 @@ class ReunionAdmin(admin.ModelAdmin):
             obj.publicado = request.user.get_profile()
         obj.save()
 
-admin.site.register(Reunion, ReunionAdmin)
+#admin.site.register(Reunion, ReunionAdmin)
 
 class InformeAdmin(admin.ModelAdmin):
     list_display      = ('publicado','titulo','fecha', 'ano')
@@ -41,7 +41,7 @@ class InformeAdmin(admin.ModelAdmin):
             obj.publicado = request.user.get_profile()
         obj.save()
 
-admin.site.register(Informe, InformeAdmin)
+#admin.site.register(Informe, InformeAdmin)
 
 class NoticiaAdmin(admin.ModelAdmin):
     list_display      = ('publicado','titulo','fecha','fuente','vista_previa',)
@@ -59,10 +59,10 @@ class NoticiaAdmin(admin.ModelAdmin):
             obj.publicado = request.user.get_profile()
         obj.save()
 
-admin.site.register(Noticia, NoticiaAdmin)
+#admin.site.register(Noticia, NoticiaAdmin)
 
-class EventoAdmin(AdminImageMixin, admin.ModelAdmin):
-    list_display      = ('publicado', 'titulo','inicio','fin','direccion','vista_previa')
+class EventoAdmin(admin.ModelAdmin):
+    #list_display      = ('publicado', 'titulo','inicio','fin','direccion','vista_previa')
     search_fields     = ['titulo',]
     list_per_page     = 25
     list_max_show_all = 30
@@ -78,4 +78,4 @@ class EventoAdmin(AdminImageMixin, admin.ModelAdmin):
             obj.publicado = request.user.get_profile()
         obj.save()
 
-admin.site.register(Evento, EventoAdmin)
+#admin.site.register(Evento, EventoAdmin)

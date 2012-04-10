@@ -1,5 +1,8 @@
 @import url("bootstrap/css/bootstrap.min.css");
 /*@import url("bootstrap/css/bootstrap-responsive.min.css");*/
+body, p, ul{
+    font-family: Georgia,"Times New Roman",Times,serif;
+}
 
 body {
     background-image: url("../imagen/bg1.png");
@@ -17,9 +20,10 @@ h3 {
     background-color: transparent;
     border-bottom: 1px dotted black;
     /*border-top: 1px dotted black;*/
-    /*color: black;
-    font-size: 28px;*/
+    /*color: black;*/
+    font-size: 24px;
     line-height: 1.6;
+    font-weight: normal;
     margin-bottom: 9px;
     padding-top: 12px;
     text-align: left;

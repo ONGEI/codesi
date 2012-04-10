@@ -14,4 +14,4 @@ class NomatividadAdmin(admin.ModelAdmin):
             obj.publicado = request.user.get_profile()
         obj.save()
 
-admin.site.register(Nomatividad, NomatividadAdmin)
+#admin.site.register(Nomatividad, NomatividadAdmin)

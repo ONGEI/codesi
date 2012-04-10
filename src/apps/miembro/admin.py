@@ -9,4 +9,4 @@ class MiembroAdmin(admin.ModelAdmin):
     list_per_page     = 25
     list_max_show_all = 30
 
-admin.site.register(Miembro, MiembroAdmin)
+#admin.site.register(Miembro, MiembroAdmin)

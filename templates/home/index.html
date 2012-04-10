@@ -3,6 +3,121 @@
 {% block contenido %}
     <section class="codesi">
         <h3>CODESI - La Agenda Digital Peruana 2.0</h3>
+        
+        <div class="carousel slide" id="myCarousel">
+            <div class="carousel-inner">
+              <div class="item active">
+                
+                <ul class="thumbnails">
+        <li class="span4">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/360x268">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+      </ul>
+                
+                <div class="carousel-caption">
+                  <h4>First Thumbnail label</h4>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+              </div>
+              <div class="item">
+                
+                                <ul class="thumbnails">
+        <li class="span4">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/360x268">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+      </ul>
+                
+                <div class="carousel-caption">
+                  <h4>Second Thumbnail label</h4>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+              </div>
+              <div class="item">
+
+                                <ul class="thumbnails">
+        <li class="span4">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/360x268">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/160x120">
+          </a>
+        </li>
+      </ul>
+
+                <div class="carousel-caption">
+                  <h4>Third Thumbnail label</h4>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+              </div>
+            </div>
+            <a data-slide="prev" href="#myCarousel" class="left carousel-control">‹</a>
+            <a data-slide="next" href="#myCarousel" class="right carousel-control">›</a>
+          </div>
+          
+
+      
         <p style='text-align:justify;'>La Sociedad de la Información constituye un eje importante en el desarrollo económico del país y en el consecuente bienestar social, desarrollo que debe ser armónico, equilibrado y consensuado por parte de todos los actores que participan en la Sociedad de la Información. Se requiere de una pertinente y eficiente infraestructura de telecomunicaciones y de sistemas de información, fundamentales para que el estado realice sus planes de contenido social de manera más adecuada, mejorar la participación de las personas en el acceso a la información, y en las decisiones de gobierno. La Sociedad de la Información permitir fortalecer el proceso de descentralización e instaurar una administración moderna y eficiente orientada a la prestación de servicios en línea.</p>
 
         <article class="holder_gallery" style='float : left;'>
@@ -18,4 +133,13 @@
         </article>
 
     </section>
+
+{% endblock %}
+{% block js %}
+    <script src="{{ STATIC_URL }}js/bootstrap-carousel.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.carousel').carousel();
+            });
+    </script>
 {% endblock %}

@@ -14,9 +14,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
+        'NAME': 'codesi',                      # Or path to database file if using sqlite3.
+        'USER': 'codesi',                      # Not used with sqlite3.
+        'PASSWORD': ')0d3s1',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
         'OPTIONS': {
@@ -34,7 +34,7 @@ ROOT_PATH, PROJECT_DIR = split(realpath(dirname(__file__)))
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Lima'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -105,7 +105,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'linaro_django_pagination.middleware.PaginationMiddleware',
+    #'linaro_django_pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'project.urls'
@@ -125,35 +125,36 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #apps
-    'sorl.thumbnail',
-    'grappelli.dashboard',
-    'grappelli',
-    'filebrowser',
-    'south',
-    'linaro_django_pagination',
+    #'filebrowser',
+    #'grappelli.dashboard',
     # Uncomment the next line to enable the admin:
+    'grappelli',
+    #'south',
+    #'linaro_django_pagination',
+    #'sorl.thumbnail',
+    #'projectadmin',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'perfil',
-    'normatividad',
-    'miembro',
-    'grupo',
-    'actividad',
+    #'perfil',
+    #'normatividad',
+    #'miembro',
+    #'equipo',
+    #'actividad',
+    #'objetivo',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.request",
-    "django.core.context_processors.static",
-)
 
-GRAPPELLI_INDEX_DASHBOARD = 'project.dashboard.CustomIndexDashboard'
 
-AUTH_PROFILE_MODULE = 'perfil.Perfil'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'fake123456'
+EMAIL_HOST_USER = 'fake.the.miseck'
+EMAIL_PORT = 587
+
+#GRAPPELLI_INDEX_DASHBOARD = 'project.dashboard.CustomIndexDashboard'
+
+#AUTH_PROFILE_MODULE = 'perfil.Perfil'
 
 GRAPPELLI_ADMIN_TITLE = 'Admin CMS for CODESI'
 

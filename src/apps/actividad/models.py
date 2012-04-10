@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.encoding import force_unicode
-from sorl.thumbnail import ImageField, get_thumbnail
+from sorl.thumbnail import ImageField
 from perfil.models import Perfil
 import datetime
 
@@ -26,7 +26,7 @@ class Reunion(models.Model):
     descripcion = models.TextField('Descripción')
 
     class Meta:
-        verbose_name = 'Reunión'
+        verbose_name = 'Reunion'
         verbose_name_plural = 'Reuniones'
 
     def __unicode__(self):
@@ -38,7 +38,7 @@ class Informe(models.Model):
     documento   = models.TextField('Documento', blank = False, null =False)
     fecha       = models.DateField('Fecha de publicación', default = datetime.date.today(), editable = False)
     ano         = models.CharField('Año',max_length = 4, default = datetime.date.today().year)
-    descripcion = models.TextField('Descripción')
+    descripcion = models.TextField('Descripción', blank = True, null = True)
 
     class Meta:
         verbose_name = 'Informe'
@@ -48,13 +48,14 @@ class Informe(models.Model):
         return u'%s' % (force_unicode(self.titulo, encoding='utf-8', strings_only=False, errors='strict'),)
 
     def get_titulo(self):
-        print self.titulo.replace(' ', '_')
         return self.titulo.replace(' ', '_')
 
     @staticmethod
     def get_informes():
-        a = Informe.objects.values('ano').distinct('ano')[:2]
-        return (Informe.objects.filter(ano = a[0]['ano']).order_by('-pk')[:3],Informe.objects.filter(ano = a[1]['ano']).order_by('-pk')[:3],[a[0]['ano'],a[1]['ano']],)
+        a = Informe.objects.values('ano').order_by('-ano').distinct()[:2]
+        if a:
+            return (Informe.objects.filter(ano = a[0]['ano']).order_by('-pk')[:3],Informe.objects.filter(ano = a[1]['ano']).order_by('-pk')[:3],[a[0]['ano'],a[1]['ano']],)
+        return None
 
 class Noticia(models.Model):
     publicado = models.ForeignKey(Perfil, editable = False)
@@ -103,7 +104,7 @@ class Evento(models.Model):
 
     def vista_previa(self):
         if self.foto:
-            return '<img src="/media/%s" alt="thumb" heigth="50px" width="50px"/>' % self.foto
+            return '<img src="/media/%s" alt="thumb" heigth="50px" width="50px"/>' % "#"
         return u''
     vista_previa.allow_tags = True
 

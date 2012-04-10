@@ -11,6 +11,8 @@
         <![endif]-->
         <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.gif" type="image/x-icon"/> 
         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/codesi.css"/>
+        {% block extrahead %}
+        {% endblock extrahead %}
     </head>
     <body>
 
@@ -27,15 +29,17 @@
                     </div>
                 </div>
                 
-                <div class="row show-grid">
+                <!--<div class="row show-grid">
                     <div class="span12">
                         <header></header>
                     </div>
-                </div>
+                </div>-->
 
                 <div class="row show-grid">
                     <div class="span8">
                     {% block contenido %}
+                    {% endblock %}
+                    {% block content %}
                     {% endblock %}
                     </div>
 
@@ -64,6 +68,6 @@
             {% endif %}{% endif %}{% endif %}
         </script>
         {% endif %}
-
+        {% block js %}{% endblock %}
     </body>
 </html>
