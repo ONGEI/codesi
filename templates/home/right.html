@@ -1,7 +1,7 @@
 <aside class="rigth-bar" style="width:100%;">
-    <h3 style="margin-left: 30px;"><a href="/actividad/informes/">Informes</a></h3>
-    
-    <div style="margin-left: 30px;margin-bottom: 9px;padding: 8px 0;" class="well">
+    <h3><a href="/actividad/informes/">Informes</a></h3>
+    <!--style="margin-left: 30px;margin-bottom: 9px;padding: 8px 0;"-->
+    <div class="well">
         <ul class="nav nav-list">
             <li class="nav-header">{{ informes.2.0 }}</li>
             {% for informe in informes.0 %}
@@ -44,3 +44,13 @@
     {% endfor %}
    
 </aside>
+
+<aside class="rigth-bar">
+    <a href='#'><img title='facebook' src='{{ STATIC_URL }}imagen/facebook.png' alt='facebook'/></a>
+    <a href='#'><img title='twitter' src='{{ STATIC_URL }}imagen/twitter.png' alt='twitter'/></a>
+</aside>
+
+<aside class="rigth-bar">
+<iframe width="100%" height="315" src="http://www.youtube.com/embed/videoseries?list=PL6177F9713D5E7AC3&amp;hl=es_ES" frameborder="0" allowfullscreen></iframe>
+</aside>
+

@@ -2,28 +2,25 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.views.static import serve
-#from filebrowser.sites import site
+from filebrowser.sites import site
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^{{ project_name }}/', include('{{ project_name }}.foo.urls')),
-
-    #url(r'^admin/filebrowser/', include(site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/filebrowser/', include(site.urls)),
     # Uncomment the next line to enable the admin:
+    (r'^admin/projectadmin/',include('projectadmin.urls')),
     (r'^admin/', include(admin.site.urls)),
-    #(r'^admin/projectadmin/', include('projectadmin.urls')),
     (r'^grappelli/', include('grappelli.urls')),
-
-    #(r'^miembro/', include('miembro.urls')),
-    #(r'^normatividad/', include('normatividad.urls')),
-    #(r'^actividad/', include('actividad.urls')),
-    #url(r'^$', 'home.views.index'),
+    #app urls
+    (r'^miembro/', include('miembro.urls')),
+    (r'^normatividad/', include('normatividad.urls')),
+    (r'^actividad/', include('actividad.urls')),
+    url(r'^$', 'home.views.index'),
 )
 
 #if settings.DEBUG:

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from models import Integrante, Reunion, Informe, Noticia, Evento
+from models import Reunion, Informe, Noticia, Evento
 import datetime
 
 def eventos(request, date_year = datetime.datetime.today().year):

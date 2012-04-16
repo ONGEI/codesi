@@ -14,48 +14,32 @@
         {% block extrahead %}
         {% endblock extrahead %}
     </head>
-    <body>
+    <body data-offset="50" data-target=".subnav" data-spy="scroll" data-twttr-rendered="true">
 
+        {% include "home/nav.html" %}
         <div id='container' class="container">
-            <section id="gridSystem">
-
-                <div class="row show-grid">
-                    <div class="span4">
-                        <img src='{{ STATIC_URL }}imagen/logo.gif' alt='Logo oficial de O.N.G.E.I'/>
-                    </div>
-                    
-                    <div class="span8">
-                        {% include "home/nav.html" %}
-                    </div>
-                </div>
-                
-                <!--<div class="row show-grid">
-                    <div class="span12">
-                        <header></header>
-                    </div>
-                </div>-->
-
-                <div class="row show-grid">
-                    <div class="span8">
+            <header class="jumbotron masthead">
+                <img src='{{ STATIC_URL }}imagen/logo.gif' alt='Logo oficial de O.N.G.E.I'/>
+            </header>
+            <div class="row-fluid">
+                <div class="span8">
                     {% block contenido %}
                     {% endblock %}
                     {% block content %}
                     {% endblock %}
-                    </div>
-
-                    <div class="span4">
-                        {% include "home/right.html" %}
-                    </div>
-
                 </div>
 
-            </section>
+                <div class="span4">
+                    {% include "home/right.html" %}
+                </div>
+
+            </div>
+            
         </div>
-        
         {% include "home/footer.html" %}
-        
         <script src="{{ STATIC_URL }}js/jquery.js"></script>
         <script src="{{ STATIC_URL }}js/bootstrap-dropdown.js"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap-collapse.js"></script>
         {% if app == 'evento' or app == 'noticia' or app == 'informe' %}
         <script src='{{ STATIC_URL }}js/actividad.js'></script>
         <script>

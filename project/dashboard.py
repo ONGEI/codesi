@@ -23,7 +23,7 @@ class CustomIndexDashboard(Dashboard):
         
         # append a group for "Administration" & "Applications"
         self.children.append(modules.Group(
-            _('Group: Administration & Applications'),
+            _('Group: Administration'),
             column=1,
             collapsible=True,
             children = [
@@ -33,24 +33,54 @@ class CustomIndexDashboard(Dashboard):
                     collapsible=False,
                     models=('django.contrib.*',),
                 ),
+                modules.AppList(
+                    _('AppList: Aplicaciones'),
+                    collapsible=True,
+                    column=1,
+                    css_classes=('collapse opened',),
+                    exclude=('django.contrib.*','projectadmin.*'),
+                ),
             ]
         ))
         
+        
         # append an app list module for "Applications"
-        self.children.append(modules.AppList(
-            _('AppList: Aplicaciones'),
+        self.children.append(modules.Group(
+            _('Panel: Project Admin'),
             collapsible=True,
             column=1,
             css_classes=('collapse opened',),
             exclude=('django.contrib.*',),
-        ))
-        
-        # append an app list module for "Administration"
-        self.children.append(modules.ModelList(
-            _('ModelList: Administration'),
-            column=1,
-            collapsible=False,
-            models=('django.contrib.*',),
+            children = [
+                modules.ModelList(
+                    _('Proyectos'),
+                    column=1,
+                    models=('projectadmin.models.Proyecto',),
+                ),
+                modules.ModelList(
+                    _('Recursos'),
+                    column=1,
+                    css_classes=('collapse opened',),
+                    models=(
+                        'projectadmin.models.Peticion',
+                        'projectadmin.models.Wiki',
+                        'projectadmin.models.Documento',
+                        'projectadmin.models.Archivo',
+                        'projectadmin.models.Comentario',
+                        ),
+                ),
+                modules.LinkList(
+                    _('Analisis'),
+                    column=2,
+                    children=[
+                        {
+                            'title': _(u'Calendario'),
+                            'url': '/admin/projectadmin/show/calendar/',
+                            'external': False,
+                        },
+                    ]
+                ),
+            ]
         ))
         
         # append another link list module for "support".

@@ -1,22 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.encoding import force_unicode
-from sorl.thumbnail import ImageField
+#from sorl.thumbnail import ImageField
 from perfil.models import Perfil
 import datetime
-
-class Integrante(models.Model):
-    publicado = models.ForeignKey(Perfil, editable = False)
-    entidad   = models.CharField('Entidad/Empresa', max_length = 250, blank = False, null =False)
-    contacto  = models.CharField('Contacto', max_length = 250, blank = False, null =False)
-    cargo     = models.CharField('Cargo', max_length = 250, blank = False, null =False)
-    direccion = models.CharField('Dirección', max_length = 250)
-    telefono  = models.CharField('Teléfono', max_length = 25)
-    email     = models.EmailField('E-Mail', blank = False, null = False)
-
-    class Meta:
-        verbose_name = 'Integrante'
-        verbose_name_plural = 'Integrantes'
 
 class Reunion(models.Model):
     publicado   = models.ForeignKey(Perfil, editable = False)
@@ -92,7 +79,7 @@ class Evento(models.Model):
     inicio      = models.DateTimeField('Fecha de inicio', default = datetime.datetime.today())
     fin         = models.DateTimeField('Fecha de culminación', default = datetime.datetime.today())
     descripcion = models.TextField('Descripción', blank = False, null = False)
-    foto        = ImageField(upload_to = 'uploads/fotos/', blank = True, null = True)
+    foto        = models.ImageField('Foto', upload_to = 'uploads/fotos/', blank = True, null = True)
     publicacion = models.DateTimeField('Fecha de publicación', default = datetime.datetime.today(), editable = False)
 
     class Meta:
@@ -111,3 +98,16 @@ class Evento(models.Model):
     @staticmethod
     def get_eventos():
         return Evento.objects.all().order_by('-pk')[:2]
+
+class Slide(models.Model):
+    evento      = models.ForeignKey(Evento)
+    titulo      = models.CharField('Título', max_length = 250, blank = False, null =False)
+    descripcion = models.CharField('Descripcion', max_length = 255, blank = False, null =False)
+    portada     = models.URLField('Portada', blank = False, null =False)
+    foto_1      = models.URLField('Foto', blank = False, null =False)
+    foto_2      = models.URLField('Foto', blank = False, null =False)
+    foto_3      = models.URLField('Foto', blank = False, null =False)
+    foto_4      = models.URLField('Foto', blank = False, null =False)
+
+    def __unicode__(self):
+        return u'%s' % (self.titulo)
