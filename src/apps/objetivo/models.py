@@ -1,10 +1,14 @@
+# -*- coding: utf-8 -*-
 from django.db import models
-from perfil.models import Perfil
+from equipo.models import Equipo
 from projectadmin.models import Peticion
 
 class Objetivo(models.Model):
-    responsable = models.ForeignKey(Perfil)
-    peticion    = models.ForeignKey(Peticion)
+    peticion = models.ForeignKey(Peticion)
+    grupo    = models.ForeignKey(Equipo)
+
+    def __unicode__(self):
+        return u'Objetivo: %s' % self.peticion.asunto
 
     def proyecto(self):
         return u'%s' % self.peticion.proyecto.nombre
@@ -26,3 +30,12 @@ class Objetivo(models.Model):
 
     def prioridad(self):
         return u'%s' % self.peticion.get_prioridad()
+
+class Comentario(models.Model):
+    objetivo   = models.ForeignKey(Objetivo)
+    comentario = models.CharField('Comentario', max_length=140, null=False, blank=False)
+    respuetsa  = models.ForeignKey('self', related_name='+', blank = True, null = True)
+    aprovado   = models.BooleanField('¿Aprovado?', default=False)
+
+    def __unicode__(self):
+        return u'%s' % self.objetivo
