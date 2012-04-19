@@ -31,9 +31,15 @@ class Objetivo(models.Model):
     def prioridad(self):
         return u'%s' % self.peticion.get_prioridad()
 
+    def get_url(self):
+        return u'/objetivo/%d/describir/' % self.pk
+
 class Comentario(models.Model):
     objetivo   = models.ForeignKey(Objetivo)
-    comentario = models.CharField('Comentario', max_length=140, null=False, blank=False)
+    fecha      = models.DateField('Fecha',auto_now=True, auto_now_add=True)
+    ciudadano  = models.CharField('Nombre y Apelidos',max_length=200)
+    email      = models.EmailField('E-Mail')
+    comentario = models.TextField('Comentario', null=False, blank=False)
     respuetsa  = models.ForeignKey('self', related_name='+', blank = True, null = True)
     aprovado   = models.BooleanField('¿Aprovado?', default=False)
 

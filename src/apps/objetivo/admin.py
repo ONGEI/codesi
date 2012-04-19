@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 #from sorl.thumbnail.admin import AdminImageMixin
-from models import Objetivo
+from models import Objetivo, Comentario
 
 class ObjetivoAdmin(admin.ModelAdmin):
     list_display      = ('proyecto','peticion','creado_por','asignado_a','creado','terminado','prioridad','estado',)
@@ -15,3 +15,5 @@ class ObjetivoAdmin(admin.ModelAdmin):
     #    obj.save()
 
 admin.site.register(Objetivo, ObjetivoAdmin)
+
+admin.site.register(Comentario)

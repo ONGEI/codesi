@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block titulo %}CODESI - {{ objetivo.peticion.asunto }}{% endblock %}
+{% block contenido %}
+    <section class="codesi">
+        <h3>CODESI - {{ objetivo.peticion.asunto }}</h3>
+        <article class="holder_gallery">
+            <p><strong>Fecha de creación:</strong> {{ objetivo.peticion.creado_fecha|date:"d/m/Y" }}</p>
+            {% autoescape off %}
+                {{ objetivo.peticion.descripcion  }}
+            {% endautoescape %}
+        </article>
+        <article>
+            <form class="form-horizontal" action='/objetivo/{{ objetivo.pk }}/describir/' method='POST'>
+                <fieldset>
+                    <legend>Comentar</legend>
+                    <div class="control-group">
+                        {% csrf_token %}
+                    </div>
+                     <div class="control-group">
+                        {% if comentarioform.ciudadano.errors %}
+                            <div class="alert alert-error">
+                                <a class="close" data-dismiss="alert">×</a>
+                                {{ comentarioform.ciudadano.errors }}
+                            </div>
+                        {% endif %}
+                        <label class="control-label" for="id_ciudadano">Nombre y Apellidos</label>
+                        <div class="controls">
+                            <!--<input type="text" class="input-xlarge" id="input01">-->
+                            {{ comentarioform.ciudadano }}
+                            <p class="help-block">Ingrese su nombre y apellidos.</p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {% if comentarioform.email.errors %}
+                            <div class="alert alert-error">
+                                <a class="close" data-dismiss="alert">×</a>
+                                {{ comentarioform.email.errors }}
+                            </div>
+                        {% endif %}
+                        <label class="control-label" for="id_email">E-Mail</label>
+                        <div class="controls">
+                            <!--<input type="text" class="input-xlarge" id="input01">-->
+                            {{ comentarioform.email }}
+                            <p class="help-block">Ingrese su E-Mail. Ejemplo: mi_email@email.com.</p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {% if comentarioform.comentario.errors %}
+                            <div class="alert alert-error">
+                                <a class="close" data-dismiss="alert">×</a>
+                                {{ comentarioform.comentario.errors }}
+                            </div>
+                        {% endif %}
+                        <label class="control-label" for="id_comentario">Comentario</label>
+                        <div class="controls">
+                            <!--<input type="text" class="input-xlarge" id="input01">-->
+                            {{ comentarioform.comentario }}
+                            <p class="help-block">Ingrese su comentario.</p>
+                            <!--<textarea rows="3" id="textarea" class="input-xlarge"></textarea>-->
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <input type="hidden" name="objetivo" class="input-xlarge" id="id_objetivo" value='{{ objetivo.pk }}'>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary" type="submit">Comentar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </article>
+        <article>
+            <fieldset>
+                <legend>Comentarios</legend>
+                <div>
+                    {% for comentario in comentarios %}
+                        <p><strong>{{ comentario.ciudadano }}</strong></p>
+                        <p><span style='font-size:7px;'>{{ comentario.fecha }} | {{ comentario.email }}<span></p>
+                        <p>{{ comentario.comentario }}</p>
+                    {% endfor %}
+                </div>
+            </fieldset>
+        </article>
+    </section>
+
+{% endblock %}
+

@@ -8,7 +8,7 @@ from actividad.models import Evento, Noticia, Informe
 def listar(request, equipo):
     equipo = Equipo.objects.get(pk = equipo)
     objetivos = equipo.objetivo_set.all()
-    integrantes = Integrante.objects.filter(Q(equipo=equipo),Q(activo=True))
+    integrantes = Integrante.objects.filter(Q(equipo=equipo),Q(activo=True)).order_by('perfil__entidad__entidad')
     coordinador = integrantes.get(coordinador=True)
     return render(
                     request,

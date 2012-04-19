@@ -19,8 +19,11 @@ class Equipo(models.Model):
 
     #def get_integrantes(self):
     #    return self.integrante_set.filter()
-    def get_coordinador(self):
-        return self.integrante_set.get(coordinador=True)
+    #def get_coordinador(self):
+    #    return self.integrante_set.get(coordinador=True)
+
+    #def get_eventos(self):
+    #    return None
 
 class Integrante(models.Model):
     #publicado   = models.ForeignKey(Perfil, editable = False)

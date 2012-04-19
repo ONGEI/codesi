@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block titulo %}CODESI - {{ equipo.nombre }}{% endblock %}
+{% block contenido %}
+    <section class="codesi">
+        <h3>CODESI - {{ equipo.nombre }}</h3>
+        <article class="holder_gallery">
+            <fieldset>
+                <legend>Coordinador</legend>
+                <h4>{{ coordinador.perfil.entidad.entidad }}</h4>
+                <p><strong>{{ coordinador.perfil }}</strong></p>
+                <p><strong>E-Mail:</strong> {{ coordinador.perfil.user.email }}</p>
+                <p><strong>Cargo:</strong> {{ coordinador.perfil.cargo }}</p>
+            </fieldset>
+        </article>
+        <article class="holder_gallery">
+            <fieldset>
+                <legend>Objetivos</legend>
+                {% for objetivo in objetivos %}
+                    <article class="holder_gallery">
+                        <h4><a href='{{ objetivo.get_url }}'>{{ objetivo.peticion.asunto }}</a></h4>
+                        <p><strong>Fecha de creación:</strong> {{ objetivo.peticion.creado_fecha|date:"d/m/Y" }}</p>
+                        {% autoescape off %}
+                            {{ objetivo.peticion.descripcion|truncatewords:20  }}
+                        {% endautoescape %}
+                    </article>
+                {% endfor %}
+            </fieldset>
+            <fieldset>
+                <legend>Integrantes</legend>
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Empresa/Entidad</th>
+                            <th>Contacto</th>
+                            <th>E-Mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for integrante in integrantes %}
+                            <tr>
+                                <td>{{ integrante.perfil.entidad.entidad }}</td>
+                                <td>{{ integrante.perfil.user.get_full_name }}</td>
+                                <td>{{ integrante.perfil.user.email }}</td>
+                            <tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </fieldset>
+        </article>
+    </section>
+
+{% endblock %}
