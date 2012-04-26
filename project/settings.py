@@ -13,15 +13,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'codesi',                      # Or path to database file if using sqlite3.
-        'USER': 'codesi',                      # Not used with sqlite3.
-        'PASSWORD': ')0d3s1',                  # Not used with sqlite3.
+        'ENGINE': 'django.db.backends', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-        'OPTIONS': {
-            'init_command': 'SET storage_engine=INNODB;SET CHARACTER SET utf8;SET collation_connection=utf8_bin;',
-        },
     }
 }
 
@@ -147,10 +144,10 @@ INSTALLED_APPS = (
 
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = 'fake123456'
-EMAIL_HOST_USER = 'fake.the.miseck'
-EMAIL_PORT = 587
+EMAIL_HOST = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = ''
+EMAIL_PORT = 0
 
 #GRAPPELLI_INDEX_DASHBOARD = 'project.dashboard.CustomIndexDashboard'
 
