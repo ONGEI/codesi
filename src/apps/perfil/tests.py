@@ -6,7 +6,7 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
-
+from django.contrib.auth import User
 
 class SimpleTest(TestCase):
     def test_basic_addition(self):
@@ -14,3 +14,7 @@ class SimpleTest(TestCase):
         Tests that 1 + 1 always equals 2.
         """
         self.assertEqual(1 + 1, 2)
+
+    def save_perfil(self):
+        u = User.objects.get(pk=1)
+        self.client.post('')
