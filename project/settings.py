@@ -5,24 +5,22 @@ from os.path import dirname, join, realpath, split
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
-    ('O.N.G.E.I', 'ONGEI@pcm.gob.pe'),
-    ('Micky Miseck', 'themiseck.rock@gmail.com'),
 )
 
 MANAGERS = ADMINS
 
+ROOT_PATH, PROJECT_DIR = split(realpath(dirname(__file__)))
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': realpath(join(ROOT_PATH, 'codesidev.sqlite')),                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
-
-ROOT_PATH, PROJECT_DIR = split(realpath(dirname(__file__)))
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -69,7 +67,7 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/grappelli/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -87,7 +85,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'v8f#(k_ani#x_!*=&(+@8=8oa1x-3#j^b%3x(b8b*^v!m-vr^4'
+SECRET_KEY = 'h8_ly+)tx6sw7lrpc_@cxj0%w888c+q0wjg__^v!gq_ktbu1va'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -102,7 +100,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    #'linaro_django_pagination.middleware.PaginationMiddleware',
+    'linaro_django_pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'project.urls'
@@ -111,7 +109,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    realpath(join(ROOT_PATH, 'templates'))
+    realpath(join(ROOT_PATH, 'templates')),
 )
 
 INSTALLED_APPS = (
@@ -121,39 +119,47 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #apps
-    #'filebrowser',
-    #'grappelli.dashboard',
-    # Uncomment the next line to enable the admin:
+    #app
+    'filebrowser',
+    'grappelli.dashboard',
     'grappelli',
-    #'south',
-    #'linaro_django_pagination',
-    #'sorl.thumbnail',
-    #'projectadmin',
+    'south',
+    'linaro_django_pagination',
+    'projectadmin',
+    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    #'perfil',
-    #'normatividad',
-    #'miembro',
-    #'equipo',
-    #'actividad',
-    #'objetivo',
+    'perfil',
+    'normatividad',
+    'miembro',
+    'equipo',
+    'actividad',
+    'objetivo',
 )
 
-
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    "django.core.context_processors.static",
+)
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_HOST_USER = ''
-EMAIL_PORT = 0
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'fake123456'
+EMAIL_HOST_USER = 'fake.the.miseck'
+EMAIL_PORT = 587
 
-#GRAPPELLI_INDEX_DASHBOARD = 'project.dashboard.CustomIndexDashboard'
+GRAPPELLI_INDEX_DASHBOARD = 'project.dashboard.CustomIndexDashboard'
 
-#AUTH_PROFILE_MODULE = 'perfil.Perfil'
+AUTH_PROFILE_MODULE = 'perfil.Perfil'
 
 GRAPPELLI_ADMIN_TITLE = 'Admin CMS for CODESI'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
