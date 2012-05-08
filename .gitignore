@@ -8,7 +8,4 @@ bin/*
 eggs/*
 var/*
 *.*~
-bin/
-eggs/
-parts/
 
